@@ -1,12 +1,21 @@
 const express = require("express");
 const env = require("dotenv");
 const app = express();
+const bodyParser = require("body-parser");
 
 env.config();
 
-app.get("/", (req, res) => {
+app.use(bodyParser());
+
+app.get("/", (req, res, next) => {
   res.status(200).json({
     message: "Hello From The Server",
+  });
+});
+
+app.post("/data", (req, res, next) => {
+  res.status(200).json({
+    message: req.body,
   });
 });
 
