@@ -2,10 +2,22 @@ const express = require("express");
 const env = require("dotenv");
 const app = express();
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 env.config();
 
 app.use(bodyParser());
+
+//DB Connection
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log("Database Connected");
+  });
 
 app.get("/", (req, res, next) => {
   res.status(200).json({
