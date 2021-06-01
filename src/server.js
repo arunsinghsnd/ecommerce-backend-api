@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 // routes for
 
-const userRoutes = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 
 // Enviroment variable so we  can say constant
 
@@ -26,7 +26,7 @@ mongoose
 
 // middleware
 app.use(bodyParser());
-app.use("/api", userRoutes);
+app.use("/api", authRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(` Server is running on port ${process.env.PORT}`);

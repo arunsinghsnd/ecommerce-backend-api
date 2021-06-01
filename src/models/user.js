@@ -60,7 +60,7 @@ userSchema.virtual("fullName").get(function () {
 });
 
 userSchema.methods = {
-  authenticate: function () {
+  authenticate: function (password) {
     return bcrypt.compareSync(password, this.hash_password);
   },
 };
